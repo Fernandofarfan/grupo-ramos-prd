@@ -9,8 +9,6 @@ resource "google_compute_disk" "data_disks" {
   zone    = var.zone
   size    = each.value.size
 
-  depends_on = [google_compute_instance.vm]
-
   lifecycle {
     prevent_destroy = true
   }
@@ -43,7 +41,6 @@ resource "google_compute_instance" "vm" {
   tags = each.value.tags
 
   service_account {
-    email  = null
     scopes = ["cloud-platform"]
   }
 

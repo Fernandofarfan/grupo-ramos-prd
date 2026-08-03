@@ -7,7 +7,7 @@ variable "project_id" {
 variable "host_project_id" {
   description = "ID del proyecto host de red (Shared VPC)"
   type        = string
-  default     = "gramos-prj-qa-shd-net-01"
+  default     = "gramos-prj-prd-shd-net-01"
 }
 
 variable "region" {
@@ -25,7 +25,7 @@ variable "zone" {
 variable "shared_vpc_name" {
   description = "Nombre de la red compartida (Shared VPC)"
   type        = string
-  default     = "gramos-vpc-shared-qa"
+  default     = "gramos-vpc-shared-prd"
 }
 
 variable "subnet_name" {

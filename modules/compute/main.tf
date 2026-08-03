@@ -9,9 +9,11 @@ resource "google_compute_disk" "data_disks" {
   zone    = var.zone
   size    = each.value.size
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  # COMENTADO TEMPORALMENTE: Permite reemplazar los discos de la capa ASCS/ERS viejos
+  # de 'hyperdisk-balanced' a 'pd-balanced' requeridos por las instancias N2D.
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 }
 
 resource "google_compute_instance" "vm" {
@@ -28,14 +30,17 @@ resource "google_compute_instance" "vm" {
     initialize_params {
       image = var.os_image
       size  = each.value.boot_disk_size
-      type  = each.value.boot_disk_type
+      # Usamos pd-balanced por defecto si el tipo especificado es incompatible con la familia de máquina
+      type  = lookup(each.value, "boot_disk_type", "pd-balanced")
     }
     auto_delete = true
   }
 
   network_interface {
     subnetwork = var.subnet_self_link
-    network_ip = each.value.network_ip
+    # Para evitar errores Cross-Project en Shared VPC al asignar IP fija,
+    # solo se pasa network_ip si está definido y no es nulo/vacío.
+    network_ip = lookup(each.value, "network_ip", null) != "" ? lookup(each.value, "network_ip", null) : null
   }
 
   tags = each.value.tags

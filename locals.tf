@@ -5,24 +5,24 @@ locals {
     # ----------------------------------------------------------------
     {
       name           = "vhgrrcapapp01"
-      machine_type   = "c4d-highmem-8"
+      machine_type   = "n2d-highmem-8"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
-      boot_disk_size = 30
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_size = 64
+      boot_disk_type = "pd-balanced"
       data_disks = [
-        { name = "vhgrrcapapp01-data-disk", size = 400, type = "hyperdisk-balanced" }
+        { name = "vhgrrcapapp01-data-disk", size = 512, type = "pd-balanced" }
       ]
     },
     {
       name           = "vhgrrcapapp02"
-      machine_type   = "c4d-highmem-8"
+      machine_type   = "n2d-highmem-8"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
-      boot_disk_size = 30
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_size = 64
+      boot_disk_type = "pd-balanced"
       data_disks = [
-        { name = "vhgrrcapapp02-data-disk", size = 400, type = "hyperdisk-balanced" }
+        { name = "vhgrrcapapp02-data-disk", size = 512, type = "pd-balanced" }
       ]
     },
     {
@@ -49,28 +49,28 @@ locals {
     },
 
     # ----------------------------------------------------------------
-    # Capa de Servicios Centrales (Cluster ASCS / ERS)
+    # Capa de Servicios Centrales (Cluster ASCS / ERS) - Nombres literales Excel
     # ----------------------------------------------------------------
     {
-      name           = "vhgrrcapascs01"
+      name           = "vhgrrcapascs"
       machine_type   = "n2d-highmem-4"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 30
-      boot_disk_type = "pd-balanced" # N2D requiere pd-balanced
+      boot_disk_type = "pd-balanced"
       data_disks = [
-        { name = "vhgrrcapascs01-data-disk", size = 128, type = "pd-balanced" } # N2D requiere pd-balanced
+        { name = "vhgrrcapascs-data-disk", size = 128, type = "pd-balanced" }
       ]
     },
     {
-      name           = "vhgrrcapers01"
+      name           = "vhgrrcapesr"
       machine_type   = "n2d-highmem-4"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 30
-      boot_disk_type = "pd-balanced" # N2D requiere pd-balanced
+      boot_disk_type = "pd-balanced"
       data_disks = [
-        { name = "vhgrrcapers01-data-disk", size = 128, type = "pd-balanced" } # N2D requiere pd-balanced
+        { name = "vhgrrcapesr-data-disk", size = 128, type = "pd-balanced" }
       ]
     },
 
@@ -82,14 +82,14 @@ locals {
       machine_type   = "m3-ultramem-128"
       tags           = ["allow-iap", "sap-db", "sap-vm"]
       can_ip_forward = true
-      boot_disk_size = 30
+      boot_disk_size = 64
       boot_disk_type = "hyperdisk-balanced"
       data_disks = [
         { name = "vhgrrcapdb01-sap-disk", size = 260, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb01-hana-data-disk", size = 8956, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb01-hana-log-disk", size = 512, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb01-hana-shared-disk", size = 1024, type = "hyperdisk-balanced" },
-        { name = "vhgrrcapdb01-backup-disk", size = 6144, type = "hyperdisk-balanced" },
+        { name = "vhgrrcapdb01-backup-disk", size = 6144, type = "hyperdisk-balanced" }
       ]
     },
     {
@@ -97,15 +97,15 @@ locals {
       machine_type   = "m3-ultramem-128"
       tags           = ["allow-iap", "sap-db", "sap-vm"]
       can_ip_forward = true
-      boot_disk_size = 30
+      boot_disk_size = 64
       boot_disk_type = "hyperdisk-balanced"
       data_disks = [
         { name = "vhgrrcapdb02-sap-disk", size = 260, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb02-hana-data-disk", size = 8956, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb02-hana-log-disk", size = 512, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb02-hana-shared-disk", size = 1024, type = "hyperdisk-balanced" },
-        { name = "vhgrrcapdb02-backup-disk", size = 6144, type = "hyperdisk-balanced" },
+        { name = "vhgrrcapdb02-backup-disk", size = 6144, type = "hyperdisk-balanced" }
       ]
-    },
+    }
   ]
 }

@@ -7,11 +7,6 @@ terraform {
       version = ">= 5.0"
     }
   }
-
-  # backend "gcs" {
-  #   bucket = "gramos-terraform-state-prd"
-  #   prefix = "sap-car/prd"
-  # }
 }
 
 provider "google" {
@@ -33,7 +28,6 @@ data "google_compute_subnetwork" "shared_subnet_prd" {
   region  = var.region
 }
 
-# Terraform obtiene el número de proyecto automáticamente de la API de GCP
 data "google_project" "service_project" {
   project_id = var.project_id
 }
@@ -41,8 +35,6 @@ data "google_project" "service_project" {
 # ----------------------------------------------------------------
 # Permisos IAM Cross-Project para Shared VPC
 # ----------------------------------------------------------------
-
-# 1. Asigna permiso al Compute Engine Service Agent de PRD sobre la Subred Host
 resource "google_compute_subnetwork_iam_member" "compute_agent_network_user" {
   project    = var.host_project_id
   region     = var.region
@@ -64,7 +56,6 @@ module "compute" {
 
   instances = local.vm_instances
 
-  # Garantiza que el permiso de red del agente se aplique ANTES de intentar crear las VMs
   depends_on = [
     google_compute_subnetwork_iam_member.compute_agent_network_user
   ]

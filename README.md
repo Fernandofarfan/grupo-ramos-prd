@@ -6,17 +6,17 @@ Infraestructura Terraform para el despliegue del entorno de Produccion (PRD) de 
 
 | Capa | VM | Tipo | IP | Discos |
 |---|---|---|---|---|
-| App Server | vhgrrcapapp01 | c4d-highmem-8 | 10.79.12.20 | Boot 30GB + Data 400GB (hyperdisk-balanced) |
-| App Server HA | vhgrrcapapp02 | c4d-highmem-8 | 10.79.12.21 | Boot 30GB + Data 400GB (hyperdisk-balanced) |
-| WebDispatcher | vhgrrwdp01 | n2d-highmem-2 | 10.79.12.26 | Boot 30GB + Data 128GB (pd-balanced) |
-| WebDispatcher HA | vhgrrwdp02 | n2d-highmem-2 | 10.79.12.27 | Boot 30GB + Data 128GB (pd-balanced) |
-| ASCS | vhgrrcapascs01 | n2d-highmem-4 | 10.79.12.23 | Boot 30GB + Data 128GB (hyperdisk-balanced) |
-| ERS | vhgrrcapers01 | n2d-highmem-4 | 10.79.12.24 | Boot 30GB + Data 128GB (hyperdisk-balanced) |
-| HANA DB Primaria | vhgrrcapdb01 | m3-ultramem-128 | 10.79.12.22 | Boot 30GB + /usr/sap:260GB + /hana/data:8956GB + /hana/log:512GB + /hana/shared:1024GB + /backup:6144GB |
-| HANA DB Secundaria | vhgrrcapdb02 | m3-ultramem-128 | 10.79.12.25 | Idem DB01 |
+| App Server | vhgrrcapapp01 | n2d-highmem-8 | 10.79.12.20 | Boot 64GB + Data 512GB (hyperdisk-balanced) |
+| App Server HA | vhgrrcapapp02 | n2d-highmem-8 | 10.79.12.21 | Boot 64GB + Data 512GB (hyperdisk-balanced) |
+| WebDispatcher | vhgrrwdp01 | n2d-highmem-2 | 10.79.12.24 | Boot 30GB + Data 128GB (hyperdisk-balanced) |
+| WebDispatcher HA | vhgrrwdp02 | n2d-highmem-2 | 10.79.12.25 | Boot 30GB + Data 128GB (hyperdisk-balanced) |
+| ASCS | vhgrrcapascs | n2d-standard-4 | 10.79.12.26 | Boot 30GB + Data 128GB (hyperdisk-balanced) |
+| ERS | vhgrrcapesr | n2d-standard-4 | 10.79.12.27 | Boot 30GB + Data 128GB (hyperdisk-balanced) |
+| HANA DB Primaria | vhgrrcapdb01 | m3-ultramem-128 | 10.79.12.22 | Boot 64GB + /usr/sap:260GB + /hana/data:8000GB + /hana/log:1024GB + /hana/shared:1024GB + /backup:6144GB (hyperdisk-balanced) |
+| HANA DB Secundaria | vhgrrcapdb02 | m3-ultramem-128 | 10.79.12.23 | Idem DB01 |
 
 - **Proyecto GCP:** `gramos-sap-car-rise-prd`
-- **Shared VPC:** `gramos-vpc-shared-qa` (Host: `gramos-prj-qa-shd-net-01`)
+- **Shared VPC:** `gramos-vpc-shared-prd` (Host: `gramos-prj-prd-shd-net-01`)
 - **Subred:** `gramos-shared-sap-prd-01` (CIDR: `10.79.12.0/24`)
 - **Region/Zona:** `us-east1` / `us-east1-b`
 - **SO:** SLES 15 SP7 for SAP Applications

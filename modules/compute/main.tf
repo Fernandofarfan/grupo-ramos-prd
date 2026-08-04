@@ -6,14 +6,8 @@ resource "google_compute_disk" "data_disks" {
   project = var.project_id
   name    = each.value.name
   type    = each.value.type
-  zone    = var.zone
+  zone    = each.value.zone
   size    = each.value.size
-
-  # COMENTADO TEMPORALMENTE: Permite reemplazar los discos de la capa ASCS/ERS viejos
-  # de 'hyperdisk-balanced' a 'pd-balanced' requeridos por las instancias N2D.
-  # lifecycle {
-  #   prevent_destroy = true
-  # }
 }
 
 resource "google_compute_instance" "vm" {
@@ -22,7 +16,7 @@ resource "google_compute_instance" "vm" {
   project      = var.project_id
   name         = each.value.name
   machine_type = each.value.machine_type
-  zone         = var.zone
+  zone         = lookup(each.value, "zone", var.zone)
 
   can_ip_forward = each.value.can_ip_forward
 
@@ -30,7 +24,6 @@ resource "google_compute_instance" "vm" {
     initialize_params {
       image = var.os_image
       size  = each.value.boot_disk_size
-      # Usamos pd-balanced por defecto si el tipo especificado es incompatible con la familia de máquina
       type  = lookup(each.value, "boot_disk_type", "pd-balanced")
     }
     auto_delete = true
@@ -38,8 +31,6 @@ resource "google_compute_instance" "vm" {
 
   network_interface {
     subnetwork = var.subnet_self_link
-    # Para evitar errores Cross-Project en Shared VPC al asignar IP fija,
-    # solo se pasa network_ip si está definido y no es nulo/vacío.
     network_ip = lookup(each.value, "network_ip", null) != "" ? lookup(each.value, "network_ip", null) : null
   }
 
@@ -62,7 +53,7 @@ resource "google_compute_attached_disk" "attached" {
   }
 
   project     = var.project_id
-  zone        = var.zone
+  zone        = each.value.zone
   instance    = google_compute_instance.vm[each.value.instance_name].self_link
   disk        = google_compute_disk.data_disks[each.value.disk_name].self_link
   device_name = each.value.disk_name
@@ -76,6 +67,7 @@ locals {
         size          = disk.size
         type          = disk.type
         instance_name = inst.name
+        zone          = lookup(inst, "zone", var.zone)
       }
     ]
   ])
@@ -85,6 +77,7 @@ locals {
       for disk in inst.data_disks : {
         instance_name = inst.name
         disk_name     = disk.name
+        zone          = lookup(inst, "zone", var.zone)
       }
     ]
   ])

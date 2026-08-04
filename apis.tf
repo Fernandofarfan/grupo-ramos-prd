@@ -5,6 +5,7 @@ resource "google_project_service" "apis" {
     "iam.googleapis.com",
     "iap.googleapis.com",
     "oslogin.googleapis.com",
+    "file.googleapis.com",
   ])
 
   project                    = var.project_id
@@ -12,3 +13,4 @@ resource "google_project_service" "apis" {
   disable_dependent_services = false
   disable_on_destroy         = false
 }
+

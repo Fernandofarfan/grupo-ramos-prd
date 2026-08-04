@@ -17,9 +17,15 @@ variable "region" {
 }
 
 variable "zone" {
-  description = "Zona GCP mandatoria (disponibilidad familia M3 en us-east1-b)"
+  description = "Zona GCP primaria (us-east1-b)"
   type        = string
   default     = "us-east1-b"
+}
+
+variable "secondary_zone" {
+  description = "Zona GCP secundaria para HA (us-east1-c)"
+  type        = string
+  default     = "us-east1-c"
 }
 
 variable "shared_vpc_name" {

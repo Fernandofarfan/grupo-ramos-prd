@@ -6,6 +6,8 @@ locals {
     {
       name           = "vhgrrcapapp01"
       machine_type   = "n2d-highmem-8"
+      zone           = var.zone
+      network_ip     = "10.79.12.20"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 64
@@ -17,6 +19,8 @@ locals {
     {
       name           = "vhgrrcapapp02"
       machine_type   = "n2d-highmem-8"
+      zone           = var.secondary_zone
+      network_ip     = "10.79.12.21"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 64
@@ -28,6 +32,8 @@ locals {
     {
       name           = "vhgrrwdp01"
       machine_type   = "n2d-highmem-2"
+      zone           = var.zone
+      network_ip     = "10.79.12.24"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 30
@@ -39,6 +45,8 @@ locals {
     {
       name           = "vhgrrwdp02"
       machine_type   = "n2d-highmem-2"
+      zone           = var.secondary_zone
+      network_ip     = "10.79.12.25"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 30
@@ -49,11 +57,13 @@ locals {
     },
 
     # ----------------------------------------------------------------
-    # Capa de Servicios Centrales (Cluster ASCS / ERS) - Nombres literales Excel
+    # Capa de Servicios Centrales (Cluster ASCS / ERS) - n2d-standard-4
     # ----------------------------------------------------------------
     {
       name           = "vhgrrcapascs"
-      machine_type   = "n2d-highmem-4"
+      machine_type   = "n2d-standard-4"
+      zone           = var.zone
+      network_ip     = "10.79.12.26"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 30
@@ -64,7 +74,9 @@ locals {
     },
     {
       name           = "vhgrrcapesr"
-      machine_type   = "n2d-highmem-4"
+      machine_type   = "n2d-standard-4"
+      zone           = var.secondary_zone
+      network_ip     = "10.79.12.27"
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 30
@@ -80,6 +92,8 @@ locals {
     {
       name           = "vhgrrcapdb01"
       machine_type   = "m3-ultramem-128"
+      zone           = var.zone
+      network_ip     = "10.79.12.22"
       tags           = ["allow-iap", "sap-db", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 64
@@ -95,6 +109,8 @@ locals {
     {
       name           = "vhgrrcapdb02"
       machine_type   = "m3-ultramem-128"
+      zone           = var.secondary_zone
+      network_ip     = "10.79.12.23"
       tags           = ["allow-iap", "sap-db", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 64

@@ -27,10 +27,10 @@ variable "instances" {
     can_ip_forward = optional(bool, false)
     boot_disk_size = number
     boot_disk_type = string
-    
+
     # SOLUCIÓN: Agregamos optional(string, null) para que no falle si no se define en locals.tf
-    network_ip     = optional(string, null) 
-    
+    network_ip = optional(string, null)
+
     data_disks = list(object({
       name = string
       size = number

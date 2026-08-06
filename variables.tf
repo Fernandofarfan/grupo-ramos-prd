@@ -23,9 +23,9 @@ variable "zone" {
 }
 
 variable "secondary_zone" {
-  description = "Zona GCP secundaria para HA (us-east1-c)"
+  description = "Zona GCP secundaria para HA (us-east1-d)"
   type        = string
-  default     = "us-east1-c"
+  default     = "us-east1-d"
 }
 
 variable "shared_vpc_name" {

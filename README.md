@@ -43,7 +43,7 @@ Infraestructura Terraform para el despliegue del entorno de Produccion (PRD) de 
 - Terraform >= 1.5.0
 - Provider `hashicorp/google` >= 5.0
 - Credenciales GCP configuradas (ADC o service account key)
-- Permisos sobre los proyectos `gramos-sap-car-rise-prd` y `gramos-prj-qa-shd-net-01`
+- Permisos sobre los proyectos `gramos-sap-car-rise-prd` y `gramos-prj-prd-shd-net-01`
 
 ## Uso
 

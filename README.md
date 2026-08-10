@@ -16,7 +16,7 @@ Infraestructura Terraform para el despliegue del entorno de Produccion (PRD) de 
 | HANA DB Secundaria | vhgrrcapdb02 | m3-ultramem-128 | 10.79.12.23 | Idem DB01 |
 
 - **Proyecto GCP:** `gramos-sap-car-rise-prd`
-- **Shared VPC:** `gramos-vpc-shared-prd` (Host: `gramos-prj-prd-shd-net-01`)
+- **Shared VPC:** `gramos-vpc-shared-prd` (Host: `gramos-prj-prod-shd-net-01`)
 - **Subred:** `gramos-shared-sap-prd-01` (CIDR: `10.79.12.0/24`)
 - **Region/Zona:** `us-east1` / `us-east1-b`
 - **SO:** SLES 15 SP7 for SAP Applications
@@ -43,7 +43,7 @@ Infraestructura Terraform para el despliegue del entorno de Produccion (PRD) de 
 - Terraform >= 1.5.0
 - Provider `hashicorp/google` >= 5.0
 - Credenciales GCP configuradas (ADC o service account key)
-- Permisos sobre los proyectos `gramos-sap-car-rise-prd` y `gramos-prj-prd-shd-net-01`
+- Permisos sobre los proyectos `gramos-sap-car-rise-prd` y `gramos-prj-prod-shd-net-01`
 
 ## Uso
 

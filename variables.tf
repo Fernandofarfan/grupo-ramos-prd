@@ -37,7 +37,7 @@ variable "shared_vpc_name" {
 variable "subnet_name" {
   description = "Nombre de la subred compartida SAP PRD"
   type        = string
-  default     = "gramos-shared-sap-prd-01"
+  default     = "gramos-shared-sap-prod-01"
 }
 
 variable "os_image" {

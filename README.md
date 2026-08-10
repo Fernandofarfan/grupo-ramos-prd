@@ -17,7 +17,7 @@ Infraestructura Terraform para el despliegue del entorno de Produccion (PRD) de 
 
 - **Proyecto GCP:** `gramos-sap-car-rise-prd`
 - **Shared VPC:** `gramos-vpc-shared-prd` (Host: `gramos-prj-prod-shd-net-01`)
-- **Subred:** `gramos-shared-sap-prd-01` (CIDR: `10.79.12.0/24`)
+- **Subred:** `gramos-shared-sap-prod-01` (CIDR: `10.79.12.0/24`)
 - **Region/Zona:** `us-east1` / `us-east1-b`
 - **SO:** SLES 15 SP7 for SAP Applications
 

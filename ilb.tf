@@ -16,7 +16,7 @@ resource "google_compute_instance_group" "umig_zone_a" {
 resource "google_compute_instance_group" "umig_zone_b" {
   project = var.project_id
   name    = "ig-sap-prd-zone-b"
-  zone    = var.secondary_zone
+  zone    = var.zone
   instances = [
     module.compute.vm_self_links[1], # app02
     module.compute.vm_self_links[3], # wdp02

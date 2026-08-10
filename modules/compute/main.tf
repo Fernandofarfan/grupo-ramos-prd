@@ -5,7 +5,7 @@ resource "google_compute_disk" "data_disks" {
 
   project = var.project_id
   name    = each.value.name
-  type    = each.value.type
+  type    = "pd-balanced"
   zone    = each.value.zone
   size    = each.value.size
 }

@@ -1,6 +1,7 @@
 # ----------------------------------------------------------------
 # Filestore (Almacenamiento Compartido NFS 1TB para SAP /sapmnt)
 # ----------------------------------------------------------------
+/*
 resource "google_filestore_instance" "sap_nfs" {
   project  = var.project_id
   name     = "filestore-sap-shared"
@@ -21,3 +22,4 @@ resource "google_filestore_instance" "sap_nfs" {
     google_project_service.apis
   ]
 }
+*/

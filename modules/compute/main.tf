@@ -24,7 +24,7 @@ resource "google_compute_instance" "vm" {
     initialize_params {
       image = var.os_image
       size  = each.value.boot_disk_size
-      type  = lookup(each.value, "boot_disk_type", "pd-balanced")
+      type  = "pd-balanced"
     }
     auto_delete = true
   }

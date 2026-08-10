@@ -13,7 +13,7 @@ resource "google_filestore_instance" "sap_nfs" {
   }
 
   networks {
-    network = data.google_compute_network.shared_vpc.name
+    network = data.google_compute_network.shared_vpc.id
     modes   = ["MODE_IPV4"]
   }
 

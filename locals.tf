@@ -11,7 +11,7 @@ locals {
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 64
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrcapapp01-data-disk", size = 512, type = "hyperdisk-balanced" }
       ]
@@ -24,7 +24,7 @@ locals {
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 64
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrcapapp02-data-disk", size = 512, type = "hyperdisk-balanced" }
       ]
@@ -37,7 +37,7 @@ locals {
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 30
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrwdp01-data-disk", size = 128, type = "hyperdisk-balanced" }
       ]
@@ -50,7 +50,7 @@ locals {
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = false
       boot_disk_size = 30
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrwdp02-data-disk", size = 128, type = "hyperdisk-balanced" }
       ]
@@ -67,7 +67,7 @@ locals {
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 30
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrcapascs-data-disk", size = 128, type = "hyperdisk-balanced" }
       ]
@@ -80,7 +80,7 @@ locals {
       tags           = ["allow-iap", "sap-app", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 30
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrcapesr-data-disk", size = 128, type = "hyperdisk-balanced" }
       ]
@@ -97,7 +97,7 @@ locals {
       tags           = ["allow-iap", "sap-db", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 64
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrcapdb01-sap-disk", size = 260, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb01-hana-data-disk", size = 8000, type = "hyperdisk-balanced" },
@@ -114,7 +114,7 @@ locals {
       tags           = ["allow-iap", "sap-db", "sap-vm"]
       can_ip_forward = true
       boot_disk_size = 64
-      boot_disk_type = "hyperdisk-balanced"
+      boot_disk_type = "pd-balanced"
       data_disks = [
         { name = "vhgrrcapdb02-sap-disk", size = 260, type = "hyperdisk-balanced" },
         { name = "vhgrrcapdb02-hana-data-disk", size = 8000, type = "hyperdisk-balanced" },

@@ -1,3 +1,3 @@
 host_project_id = "gramos-prj-prod-shd-net-01"
-shared_vpc_name = "gramos-vpc-shared-prd"
+shared_vpc_name = "gramos-vpc-shared-prod"
 subnet_name     = "gramos-shared-sap-prod-01"

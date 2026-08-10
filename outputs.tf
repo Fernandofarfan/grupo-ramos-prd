@@ -1,11 +1,11 @@
 output "vm_ips" {
-  description = "IPs internas de todas las VMs desplegadas (nombre => IP)"
-  value       = zipmap(module.compute.vm_names, module.compute.vm_internal_ips)
+  description = "IPs internas de las VMs desplegadas (nombre => IP)"
+  value       = module.compute.vm_internal_ips
 }
 
 output "vm_self_links" {
-  description = "Self-links de todas las VMs desplegadas (nombre => self_link)"
-  value       = zipmap(module.compute.vm_names, module.compute.vm_self_links)
+  description = "Self-links de las VMs desplegadas (nombre => self_link)"
+  value       = module.compute.vm_self_links
 }
 
 output "disk_self_links" {

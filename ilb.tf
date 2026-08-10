@@ -2,9 +2,9 @@
 # Grupos de Instancias No Administrados (UMIG) para Backend ILB
 # ----------------------------------------------------------------
 resource "google_compute_instance_group" "umig_zone_a" {
-  project = var.project_id
-  name    = "ig-sap-prd-zone-a"
-  zone    = var.zone
+  project   = var.project_id
+  name      = "ig-sap-prd-zone-a"
+  zone      = var.zone
   instances = [
     module.compute.vm_self_links[0], # app01
     module.compute.vm_self_links[2], # wdp01
@@ -14,9 +14,9 @@ resource "google_compute_instance_group" "umig_zone_a" {
 }
 
 resource "google_compute_instance_group" "umig_zone_b" {
-  project = var.project_id
-  name    = "ig-sap-prd-zone-b"
-  zone    = var.zone
+  project   = var.project_id
+  name      = "ig-sap-prd-zone-b"
+  zone      = var.zone
   instances = [
     module.compute.vm_self_links[1], # app02
     module.compute.vm_self_links[3], # wdp02
@@ -73,10 +73,12 @@ resource "google_compute_region_backend_service" "ascs_backend" {
   health_checks         = [google_compute_health_check.ascs_hc.id]
 
   backend {
-    group = google_compute_instance_group.umig_zone_a.id
+    group          = google_compute_instance_group.umig_zone_a.id
+    balancing_mode = "CONNECTION"
   }
   backend {
-    group = google_compute_instance_group.umig_zone_b.id
+    group          = google_compute_instance_group.umig_zone_b.id
+    balancing_mode = "CONNECTION"
   }
 }
 
@@ -89,10 +91,12 @@ resource "google_compute_region_backend_service" "hana_backend" {
   health_checks         = [google_compute_health_check.hana_hc.id]
 
   backend {
-    group = google_compute_instance_group.umig_zone_a.id
+    group          = google_compute_instance_group.umig_zone_a.id
+    balancing_mode = "CONNECTION"
   }
   backend {
-    group = google_compute_instance_group.umig_zone_b.id
+    group          = google_compute_instance_group.umig_zone_b.id
+    balancing_mode = "CONNECTION"
   }
 }
 
@@ -105,10 +109,12 @@ resource "google_compute_region_backend_service" "wdp_backend" {
   health_checks         = [google_compute_health_check.wdp_hc.id]
 
   backend {
-    group = google_compute_instance_group.umig_zone_a.id
+    group          = google_compute_instance_group.umig_zone_a.id
+    balancing_mode = "CONNECTION"
   }
   backend {
-    group = google_compute_instance_group.umig_zone_b.id
+    group          = google_compute_instance_group.umig_zone_b.id
+    balancing_mode = "CONNECTION"
   }
 }
 

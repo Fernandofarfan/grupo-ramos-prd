@@ -5,7 +5,7 @@ import {
 
 import {
   to = module.compute.google_compute_instance.vm["vhgrrcapapp02"]
-  id = "projects/gramos-sap-car-rise-prd/zones/us-east1-b/instances/vhgrrcapapp02"
+  id = "projects/gramos-sap-car-rise-prd/zones/us-east1-d/instances/vhgrrcapapp02"
 }
 
 import {
@@ -15,7 +15,7 @@ import {
 
 import {
   to = module.compute.google_compute_instance.vm["vhgrrcapesr"]
-  id = "projects/gramos-sap-car-rise-prd/zones/us-east1-b/instances/vhgrrcapesr"
+  id = "projects/gramos-sap-car-rise-prd/zones/us-east1-d/instances/vhgrrcapesr"
 }
 
 import {
@@ -25,7 +25,7 @@ import {
 
 import {
   to = module.compute.google_compute_instance.vm["vhgrrwdp02"]
-  id = "projects/gramos-sap-car-rise-prd/zones/us-east1-b/instances/vhgrrwdp02"
+  id = "projects/gramos-sap-car-rise-prd/zones/us-east1-d/instances/vhgrrwdp02"
 }
 
 import {

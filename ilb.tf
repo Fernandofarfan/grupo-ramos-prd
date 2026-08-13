@@ -2,26 +2,26 @@
 # Grupos de Instancias No Administrados (UMIG) para Backend ILB
 # ----------------------------------------------------------------
 resource "google_compute_instance_group" "umig_zone_a" {
-  project   = var.project_id
-  name      = "ig-sap-prd-zone-a"
-  zone      = var.zone
+  project = var.project_id
+  name    = "ig-sap-prd-zone-a"
+  zone    = var.zone
   instances = [
-    module.compute.vm_self_links[0], # app01
-    module.compute.vm_self_links[2], # wdp01
-    module.compute.vm_self_links[4], # ascs
-    module.compute.vm_self_links[6]  # db01
+    module.compute.vm_self_links_map["vhgrrcapapp01"],
+    module.compute.vm_self_links_map["vhgrrwdp01"],
+    module.compute.vm_self_links_map["vhgrrcapascs"],
+    module.compute.vm_self_links_map["vhgrrcapdb01"]
   ]
 }
 
 resource "google_compute_instance_group" "umig_zone_b" {
-  project   = var.project_id
-  name      = "ig-sap-prd-zone-b"
-  zone      = var.zone
+  project = var.project_id
+  name    = "ig-sap-prd-zone-b"
+  zone    = var.secondary_zone
   instances = [
-    module.compute.vm_self_links[1], # app02
-    module.compute.vm_self_links[3], # wdp02
-    module.compute.vm_self_links[5], # esr
-    module.compute.vm_self_links[7]  # db02
+    module.compute.vm_self_links_map["vhgrrcapapp02"],
+    module.compute.vm_self_links_map["vhgrrwdp02"],
+    module.compute.vm_self_links_map["vhgrrcapesr"],
+    module.compute.vm_self_links_map["vhgrrcapdb02"]
   ]
 }
 

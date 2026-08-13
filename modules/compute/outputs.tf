@@ -9,8 +9,15 @@ output "vm_internal_ips" {
 }
 
 output "vm_self_links" {
-  description = "Self-links de todas las VMs desplegadas"
+  description = "Self-links de todas las VMs desplegadas (lista)"
   value       = [for inst in var.instances : google_compute_instance.vm[inst.name].self_link]
+}
+
+output "vm_self_links_map" {
+  description = "Mapa de nombre_vm => self_link"
+  value = {
+    for inst in var.instances : inst.name => google_compute_instance.vm[inst.name].self_link
+  }
 }
 
 output "disk_self_links" {

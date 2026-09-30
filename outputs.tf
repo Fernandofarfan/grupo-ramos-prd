@@ -23,12 +23,10 @@ output "shared_subnet_self_link" {
   value       = data.google_compute_subnetwork.shared_subnet_prd.self_link
 }
 
-/*
 output "filestore_ip" {
-  description = "IP privada de Filestore NFS 1TB"
+  description = "IP privada asignada al Filestore NFS Regional"
   value       = google_filestore_instance.sap_nfs.networks[0].ip_addresses[0]
 }
-*/
 
 output "ilb_vips" {
   description = "VIPs de los Internal Load Balancers para los clústeres HA"

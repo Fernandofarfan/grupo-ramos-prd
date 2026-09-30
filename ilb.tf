@@ -2,9 +2,9 @@
 # Grupos de Instancias No Administrados (UMIG) para Backend ILB
 # ----------------------------------------------------------------
 resource "google_compute_instance_group" "umig_zone_a" {
-  project = var.project_id
-  name    = "ig-sap-prd-zone-a"
-  zone    = var.zone
+  project   = var.project_id
+  name      = "ig-sap-prd-zone-a"
+  zone      = var.zone
   instances = [
     module.compute.vm_self_links_map["vhgrrcapapp01"],
     module.compute.vm_self_links_map["vhgrrwdp01"],
@@ -14,9 +14,9 @@ resource "google_compute_instance_group" "umig_zone_a" {
 }
 
 resource "google_compute_instance_group" "umig_zone_b" {
-  project = var.project_id
-  name    = "ig-sap-prd-zone-b"
-  zone    = var.secondary_zone
+  project   = var.project_id
+  name      = "ig-sap-prd-zone-b"
+  zone      = var.zone # FIX: Se alinea a us-east1-b para coincidir con la ubicación real de las VMs en GCP
   instances = [
     module.compute.vm_self_links_map["vhgrrcapapp02"],
     module.compute.vm_self_links_map["vhgrrwdp02"],

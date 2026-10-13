@@ -13,8 +13,9 @@ resource "google_filestore_instance" "sap_nfs" {
   }
 
   networks {
-    network = data.google_compute_network.shared_vpc.id
-    modes   = ["MODE_IPV4"]
+    network      = data.google_compute_network.shared_vpc.id
+    modes        = ["MODE_IPV4"]
+    connect_mode = "PRIVATE_SERVICE_ACCESS"
   }
 
   description = "NFS HA compartido para SAP CAR PRD (/sapmnt/CAP, ASCS/ERS)"
